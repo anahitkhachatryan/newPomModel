@@ -1,13 +1,14 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ForgotClass extends LoginClass {
+public class ForgotClass extends BaseClass {
 
     public ForgotClass(WebDriver driver) {
         super(driver);
     }
 
     WebDriver driver;
+    String url = "https://the-internet.herokuapp.com/";
     By forgetPasswordPageText = By.cssSelector("div[id='content']");
     By forgetPassLink = By.linkText(("Forgot Password"));
     By emailBy = (By.id("email"));
@@ -19,22 +20,30 @@ public class ForgotClass extends LoginClass {
         return getText(forgetPasswordPageText);
     }
 
-    public void forgetPassClick() {
+    public void forgetPassClick()
+    {
         click(forgetPassLink);
     }
 
-    public void fogetSubmitClick() {
+    public void fogetSubmitClick()
+    {
         click(submit);
     }
 
-    public String getWrongFordatPassText() {
+    public String getWrongFordatPassText()
+    {
         //  System.out.println(getText(actualUserNameAnfPass));
 
         return getText(actualMissingEmailForgetPageText);
     }
 
-    public void getEmailadress(String email) {
+    public void getEmailadress(String email)
+    {
         sendKeys(emailBy, email);
         click(submit);
+    }
+
+    public void openUrl() {
+        getUrl(url);
     }
 }

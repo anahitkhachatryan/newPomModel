@@ -11,6 +11,7 @@ public class LoginPageTest extends BaseTest {
         String actualOpenPageText = loginClass.getOpenPageText();
         String expectedOpenPageText = "Welcome to the-internet";
         Assert.assertEquals(expectedOpenPageText, actualOpenPageText, "is opening wrong page");
+
     }
 
     @Test
@@ -29,16 +30,18 @@ public class LoginPageTest extends BaseTest {
 
     }
 
-    @Test(dependsOnMethods = "validLoginAndPass")
+    @Test
     public void logOut() {
-
+        loginClass = new LoginClass(driver);
+        loginClass.openUrl();
+        loginClass.formAuthentication();
+        loginClass.loginPage("tomsmith",
+                "SuperSecretPassword!");
         loginClass.logOut();
         String actualLogOutPageText = loginClass.getLogOutPageText();
         String expectedLogOutPageText = "You logged out of the secure area!\n" +
                 "×";
         Assert.assertEquals(actualLogOutPageText, expectedLogOutPageText, "logut don't work ");
-
-
     }
 
     @Test

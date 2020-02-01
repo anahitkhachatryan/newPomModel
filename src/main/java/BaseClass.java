@@ -10,6 +10,10 @@ public class BaseClass {
 
     }
 
+    public BaseClass() {
+
+    }
+
 
     public void click(By elementBy) {
         driver.findElement(elementBy).click();

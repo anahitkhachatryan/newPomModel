@@ -1,4 +1,3 @@
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,10 +19,9 @@ public class ForgotTest extends BaseTest {
         forgotClass.openUrl();
         forgotClass.forgetPassClick();
         forgotClass.fogetSubmitClick();
-        String actualMissingEmailForgetPageText= forgotClass.getWrongFordatPassText();
-        String expectedMissingEmailForgetPageText ="Internal Server Error";
+        String actualMissingEmailForgetPageText = forgotClass.getWrongFordatPassText();
+        String expectedMissingEmailForgetPageText = "Internal Server Error";
         Assert.assertEquals(actualMissingEmailForgetPageText, expectedMissingEmailForgetPageText, "DOnt show massig");
-
 
 
     }
