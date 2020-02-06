@@ -1,13 +1,25 @@
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginPageTest extends BaseTest {
+
     private LoginClass loginClass;
+
+    @BeforeClass
+    public void setUpPages() {
+        loginClass = new LoginClass(driver);
+
+    }
+
+    @BeforeMethod
+    public void openPageUrl() {
+        loginClass.openUrl();
+    }
 
     @Test
     public void openLoginPage() {
-        loginClass = new LoginClass(driver);
-        loginClass.openUrl();
         String actualOpenPageText = loginClass.getOpenPageText();
         String expectedOpenPageText = "Welcome to the-internet";
         Assert.assertEquals(expectedOpenPageText, actualOpenPageText, "is opening wrong page");
@@ -16,13 +28,10 @@ public class LoginPageTest extends BaseTest {
 
     @Test
     public void validLoginAndPass() {
-
-
-        loginClass = new LoginClass(driver);
-        loginClass.openUrl();
         loginClass.formAuthentication();
         loginClass.loginPage("tomsmith",
                 "SuperSecretPassword!");
+
         String actualLoginPageOpenPage = loginClass.getOpenLoginText();
         String expectedLoginPageOpenPage = "You logged into a secure area!\n" +
                 "×";
@@ -32,8 +41,6 @@ public class LoginPageTest extends BaseTest {
 
     @Test
     public void logOut() {
-        loginClass = new LoginClass(driver);
-        loginClass.openUrl();
         loginClass.formAuthentication();
         loginClass.loginPage("tomsmith",
                 "SuperSecretPassword!");
@@ -46,12 +53,7 @@ public class LoginPageTest extends BaseTest {
 
     @Test
     public void validLoginOrPassIn() {
-        loginClass = new LoginClass(driver);
-
-        //  loginClass.logOut();
-        loginClass.openUrl();
         loginClass.formAuthentication();
-
         loginClass.loginPage("tomsmith", "SuperSecretPassword");
         String actualWrongLoginPageText = loginClass.getWrongLoginOrPassText();
         String expectedWrongLoginPageText = "Your password is invalid!\n" +
@@ -62,11 +64,7 @@ public class LoginPageTest extends BaseTest {
 
     @Test
     public void validLoginOrPassInv() {
-        loginClass = new LoginClass(driver);
-        loginClass.openUrl();
         loginClass.formAuthentication();
-
-
         loginClass.loginPage("aaaa", "SuperSecretPassword!");
         String actualWrongLoginPageText = loginClass.getWrongLoginOrPassText();
         String expectedWrongLoginPageText = "Your username is invalid!\n" +

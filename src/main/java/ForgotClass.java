@@ -7,7 +7,7 @@ public class ForgotClass extends BaseClass {
         super(driver);
     }
 
-    WebDriver driver;
+
     String url = "https://the-internet.herokuapp.com/";
     By forgetPasswordPageText = By.cssSelector("div[id='content']");
     By forgetPassLink = By.linkText(("Forgot Password"));
@@ -20,30 +20,29 @@ public class ForgotClass extends BaseClass {
         return getText(forgetPasswordPageText);
     }
 
-    public void forgetPassClick()
-    {
+
+    public void forgetPassClick() {
         click(forgetPassLink);
     }
 
-    public void fogetSubmitClick()
-    {
+
+    public void fogetSubmitClick() {
         click(submit);
     }
 
-    public String getWrongFordatPassText()
-    {
-        //  System.out.println(getText(actualUserNameAnfPass));
 
+    public String getWrongFordatPassText() {
         return getText(actualMissingEmailForgetPageText);
     }
 
-    public void getEmailadress(String email)
-    {
+
+    public void getEmailadress(String email) {
         sendKeys(emailBy, email);
         click(submit);
     }
 
     public void openUrl() {
+
         getUrl(url);
     }
 }
