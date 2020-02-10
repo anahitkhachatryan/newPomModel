@@ -6,9 +6,10 @@ public class LoginClass extends BaseClass {
 
     public LoginClass(WebDriver driver) {
         super(driver);
+
     }
 
-    WebDriver driver;
+
     String url = "https://the-internet.herokuapp.com/";
     By getLoginedPageText = By.cssSelector("div[class='flash success']");
     By getText = By.cssSelector("h1[class='heading']");
@@ -21,40 +22,30 @@ public class LoginClass extends BaseClass {
     By logOutTexBy = By.cssSelector("div[class='flash success']");
 
     public void openUrl() {
-
-
         getUrl(url);
-
     }
 
     public String getOpenPageText() {
-
         return getText(getText);
     }
 
     public String getOpenLoginText() {
-
         return getText(getLoginedPageText);
     }
 
     public String getWrongLoginOrPassText() {
-
-
         return getText(actualUserNameAnfPass);
     }
 
     public String getLogOutPageText() {
-
         return getText(logOutTexBy);
     }
 
     public void formAuthentication() {
-
         click(formAuthentication);
     }
 
     public void logOut() {
-
         click(logOutBy);
     }
 
