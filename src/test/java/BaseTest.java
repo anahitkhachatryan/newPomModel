@@ -10,11 +10,11 @@ public class BaseTest {
 
     @BeforeClass
     public void openPage() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\anahit.khachatryan\\IdeaProjects\\POMmodel\\src\\main\\resources\\chromedriver.exe");
+
+        System.setProperty("webdriver.chrome.driver", Paths.CHROME_PATH);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
     }
 
 
@@ -22,6 +22,7 @@ public class BaseTest {
     public void closePage() {
 
         driver.quit();
+
     }
 
 }
